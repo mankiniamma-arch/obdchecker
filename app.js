@@ -1,16 +1,14 @@
 /* =========================================================================
    CarDesk US — Dashboard Light & OBD Checker
-   Part 3 of 5: app.js
-   - Safe non-blocking Signature Car Logo Splash -> Docks to Top Navbar
-   - Instant Fixed-Database Lookup (0ms, $0) + Backend /api/scan AI + Demo Mode
-   - Crisp ~0.5s Micro-Scan Reveal + RED/YELLOW/GREEN Result Card + Modals
+   Part 3: app.js (Full Interactive Console, Drag/Drop + Paste Scan,
+   Instant Fixed-DB Lookup, Backend /api/scan AI + Demo Fallback & Modals)
    ========================================================================= */
 
 (function () {
   "use strict";
 
   /* =======================================================================
-     1. CONFIGURATION (Update Links / Email if Needed; Keep API Key in Vercel)
+     1. EASY CONFIGURATION (Update URLs / Email if Needed; Keep API Key in Vercel)
      ======================================================================= */
   const CONFIG = {
     VIN_AUDIT_URL: "https://cardeskus.com/car-buyer-check",
@@ -19,7 +17,7 @@
     CAR_BUYER_URL: "https://cardeskus.com/car-buyer-check",
     CONTACT_EMAIL: "support@cardeskus.com",
 
-    // Uses Vercel Serverless Function (/api/scan) where GEMINI_API_KEY lives securely
+    // Vercel Serverless Function (/api/scan) where GEMINI_API_KEY is stored
     SCAN_API_ENDPOINT: "/api/scan"
   };
 
@@ -123,18 +121,15 @@
   const DB_MAP = Object.fromEntries(DB.map(item => [item.id, item]));
 
   const el = {
-    introSplash: document.getElementById("introSplash"),
-    introBadge: document.getElementById("introBadge"),
-    introBrandWrap: document.getElementById("introBrandWrap"),
-    navLogoDock: document.getElementById("navLogoDock"),
+    navCarTarget: document.getElementById("navCarTarget"),
+    headerDashBtn: document.getElementById("headerDashBtn"),
     scannerCard: document.getElementById("scannerCard"),
+    dropZone: document.getElementById("dropZone"),
+    photoInput: document.getElementById("photoInput"),
     input: document.getElementById("codeInput"),
     clearBtn: document.getElementById("clearInputBtn"),
     lookupBtn: document.getElementById("lookupBtn"),
     dropdown: document.getElementById("searchDropdown"),
-    snapBtn: document.getElementById("snapBtn"),
-    photoInput: document.getElementById("photoInput"),
-    browseBtn: document.getElementById("browseLightsBtn"),
     scanPanel: document.getElementById("scanPanel"),
     scanPreviewWrap: document.getElementById("scanPreviewWrap"),
     scanPreviewImg: document.getElementById("scanPreviewImg"),
@@ -171,7 +166,6 @@
   let currentMatches = [];
   let scanTimer = null;
   let toastTimer = null;
-  let introFinished = false;
 
   if (el.funnelCtaLink) el.funnelCtaLink.href = CONFIG.VIN_AUDIT_URL;
   const ecoScam = document.getElementById("ecoScamLink");
@@ -181,57 +175,12 @@
   if (ecoTicket) ecoTicket.href = CONFIG.TICKET_HELPER_URL;
   if (ecoBuyer) ecoBuyer.href = CONFIG.CAR_BUYER_URL;
 
-  /* =======================================================================
-     5. GUARANTEED NON-BLOCKING LOGO INTRO -> DOCKS INTO TOP NAVBAR
-     ======================================================================= */
-  function finishIntroImmediately() {
-    if (introFinished) return;
-    introFinished = true;
-    if (el.navLogoDock) el.navLogoDock.classList.add("landed");
-    if (el.introSplash) {
-      el.introSplash.classList.add("intro-reveal");
-      el.introSplash.classList.add("intro-done");
-    }
-  }
-
-  function runSignatureLogoIntro() {
-    if (!el.introSplash || !el.introBadge || !el.navLogoDock) return;
-
-    const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      finishIntroImmediately();
-      return;
-    }
-
-    // Tap/click anywhere on splash skips straight to page
-    el.introSplash.addEventListener("click", finishIntroImmediately, { once: true });
-
-    // Glide badge smoothly into top navbar dock after ~1.0s
-    setTimeout(() => {
-      if (introFinished) return;
-      try {
-        const fromRect = el.introBadge.getBoundingClientRect();
-        const toRect = el.navLogoDock.getBoundingClientRect();
-        const dx = (toRect.left + toRect.width / 2) - (fromRect.left + fromRect.width / 2);
-        const dy = (toRect.top + toRect.height / 2) - (fromRect.top + fromRect.height / 2);
-        const scale = Math.max(0.24, toRect.width / fromRect.width);
-
-        if (el.introBrandWrap) el.introBrandWrap.classList.add("intro-text-out");
-        el.introSplash.classList.add("intro-reveal");
-        el.introBadge.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
-
-        setTimeout(finishIntroImmediately, 520);
-      } catch (_) {
-        finishIntroImmediately();
-      }
-    }, 1020);
-
-    // Hard failsafe so page can NEVER remain stuck on splash
-    setTimeout(finishIntroImmediately, 2100);
+  if (el.navCarTarget) {
+    el.navCarTarget.classList.add("landed");
   }
 
   /* =======================================================================
-     6. INSTANT SEARCH & GENERIC OBD-II FALLBACK DECODER
+     5. INSTANT SEARCH & GENERIC OBD-II FALLBACK DECODER
      ======================================================================= */
   function searchDatabase(rawQuery) {
     const q = (rawQuery || "").trim().toLowerCase();
@@ -316,7 +265,7 @@
   }
 
   /* =======================================================================
-     7. CRISP ~0.5s MICRO-SCAN REVEAL -> INTERACTIVE RESULT CARD
+     6. CRISP ~0.5s MICRO-SCAN REVEAL -> INTERACTIVE RESULT CARD
      ======================================================================= */
   function revealResultWithPulse(item, skipPulse = false) {
     if (!item) return;
@@ -404,7 +353,7 @@
   }
 
   /* =======================================================================
-     8. VISUAL 32-ICON DASHBOARD LIGHT PICKER
+     7. VISUAL 32-ICON DASHBOARD LIGHT PICKER
      ======================================================================= */
   function renderLightGrid(filter = "ALL") {
     const lights = DB.filter(i => i.type === "light" && (filter === "ALL" || i.severity === filter));
@@ -418,12 +367,21 @@
 
   renderLightGrid("ALL");
 
-  el.browseBtn.addEventListener("click", () => {
-    const willOpen = el.lightDrawer.hidden;
-    el.lightDrawer.hidden = !willOpen;
-    el.browseBtn.setAttribute("aria-expanded", String(willOpen));
-    if (willOpen) el.scanPanel.hidden = true;
-  });
+  function openDashIconsDrawer() {
+    el.lightDrawer.hidden = false;
+    el.scanPanel.hidden = true;
+    el.scannerCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  if (el.headerDashBtn) {
+    el.headerDashBtn.addEventListener("click", () => {
+      if (el.lightDrawer.hidden) {
+        openDashIconsDrawer();
+      } else {
+        el.lightDrawer.hidden = true;
+      }
+    });
+  }
 
   document.querySelectorAll(".filter-tab").forEach(tab => {
     tab.addEventListener("click", () => {
@@ -441,15 +399,58 @@
       el.input.value = item.name;
       el.clearBtn.classList.add("visible");
       el.lightDrawer.hidden = true;
-      el.browseBtn.setAttribute("aria-expanded", "false");
       revealResultWithPulse(item);
     }
   });
 
   /* =======================================================================
-     9. SNAP / UPLOAD PHOTO -> BACKEND /api/scan AI + SMART DEMO FALLBACK
+     8. SNAP / UPLOAD / DRAG-DROP / PASTE PHOTO -> /api/scan AI + FALLBACK
      ======================================================================= */
-  el.snapBtn.addEventListener("click", () => el.photoInput.click());
+  if (el.dropZone) {
+    el.dropZone.addEventListener("click", () => el.photoInput.click());
+    el.dropZone.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        el.photoInput.click();
+      }
+    });
+
+    ["dragenter", "dragover"].forEach(evtName => {
+      el.dropZone.addEventListener(evtName, e => {
+        e.preventDefault();
+        el.dropZone.classList.add("drag-over");
+      });
+    });
+
+    ["dragleave", "drop"].forEach(evtName => {
+      el.dropZone.addEventListener(evtName, e => {
+        e.preventDefault();
+        el.dropZone.classList.remove("drag-over");
+      });
+    });
+
+    el.dropZone.addEventListener("drop", e => {
+      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f && f.type.startsWith("image/")) {
+        processImageFile(f);
+      }
+    });
+  }
+
+  // Ctrl+V / Cmd+V screenshot paste support
+  document.addEventListener("paste", e => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type && items[i].type.startsWith("image/")) {
+        const blob = items[i].getAsFile();
+        if (blob) {
+          processImageFile(blob);
+          break;
+        }
+      }
+    }
+  });
 
   el.closeScanBtn.addEventListener("click", () => {
     el.scanPanel.hidden = true;
@@ -541,12 +542,10 @@
     }).join("");
   }
 
-  el.photoInput.addEventListener("change", async e => {
-    const file = e.target.files && e.target.files[0];
+  async function processImageFile(file) {
     if (!file) return;
 
     el.lightDrawer.hidden = true;
-    el.browseBtn.setAttribute("aria-expanded", "false");
     el.scanConfirmGrid.innerHTML = "";
     el.scanPanel.hidden = false;
     el.scanPreviewWrap.classList.add("scanning");
@@ -578,13 +577,18 @@
           el.clearBtn.classList.add("visible");
           revealResultWithPulse(hintMatch);
         } else {
-          renderQuickPhotoOptions("Tap the matching light or code below (or type code above):");
+          renderQuickPhotoOptions("Tap the matching light or code below (or enter code above):");
         }
       }
     } catch (_) {
       el.scanPreviewWrap.classList.remove("scanning");
-      renderQuickPhotoOptions("Could not read photo — tap a quick match or type code above:");
+      renderQuickPhotoOptions("Could not read photo — tap a quick match or enter code above:");
     }
+  }
+
+  el.photoInput.addEventListener("change", e => {
+    const file = e.target.files && e.target.files[0];
+    if (file) processImageFile(file);
   });
 
   el.scanConfirmGrid.addEventListener("click", e => {
@@ -600,7 +604,7 @@
   });
 
   /* =======================================================================
-     10. INPUT, PILLS, CHECK ANOTHER, SHARE & LEGAL MODALS
+     9. INPUT, PILLS, CHECK ANOTHER, SHARE & LEGAL MODALS
      ======================================================================= */
   el.input.addEventListener("input", () => {
     const val = el.input.value;
@@ -727,10 +731,8 @@
   }
 
   /* =======================================================================
-     11. BOOT: RUN LOGO INTRO & CHECK SHARED ?code= QUERY
+     10. AUTO-LOAD SHARED ?code= QUERY ON LOAD
      ======================================================================= */
-  runSignatureLogoIntro();
-
   (function initFromURL() {
     const params = new URLSearchParams(window.location.search);
     const qCode = params.get("code");
