@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#060812">
+  <meta name="theme-color" content="#040611">
 
   <!-- Primary US SEO Meta Tags -->
   <title>Dashboard Light &amp; OBD Checker (Free US OBD-II Code Lookup &amp; Cost) | CarDesk US</title>
@@ -14,7 +14,7 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://cardeskus.com/obd-check">
 
-  <!-- Open Graph / Social Meta -->
+  <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="CarDesk US">
@@ -27,15 +27,15 @@
   <meta name="twitter:title" content="Dashboard Light &amp; OBD Checker | CarDesk US">
   <meta name="twitter:description" content="100% free instant US OBD-II code &amp; dashboard warning light checker with repair costs and $0 quick checks.">
 
-  <!-- Inline Neon Car SVG Favicon (Zero Extra Request) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2300F0FF'/%3E%3Cstop offset='100%25' stop-color='%23FF1E8E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23060812'/%3E%3Cpath d='M20 28l4-9h16l4 9' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='13' y='28' width='38' height='15' rx='5' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M18 43v4h6v-4M40 43v4h6v-4' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <!-- Inline Neon Car SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2338f6ff'/%3E%3Cstop offset='100%25' stop-color='%23ff2ae6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23040611'/%3E%3Cpath d='M20 28l4-9h16l4 9' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='13' y='28' width='38' height='15' rx='5' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M18 43v4h6v-4M40 43v4h6v-4' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
 
-  <!-- Copyright-Free Google Fonts (Core Web Vitals Optimized) -->
+  <!-- Copyright-Free Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet (Part 2) -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="./styles.css">
 
   <!-- Structured Data: WebApplication + FAQPage (Matches Visible FAQs) -->
@@ -126,360 +126,365 @@
 <body>
 
   <!-- =====================================================================
-       SIGNATURE CARDESK US ANIMATED LOGO INTRO (Non-Blocking for SEO)
-       Draws roof -> car body -> neon circle ring + wordmark -> docks to navbar
+       SIGNATURE CAR LOGO SPLASH INTRO (Matches Your Exact CSS + Docks to Top)
        ===================================================================== -->
-  <div id="splashOverlay" class="splash-overlay" aria-hidden="true">
-    <div id="splashStage" class="splash-stage">
-      <div id="splashEmblem" class="splash-emblem">
-        <svg id="splashCarSvg" class="cardesk-car-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div id="introSplash" class="intro-splash" title="Tap anywhere to skip intro">
+    <div id="introBackdrop" class="intro-backdrop"></div>
+    <div class="intro-stage">
+      <div id="introBadge" class="intro-badge">
+        <svg id="introSvg" class="intro-svg" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="splashCarGrad" x1="18" y1="60" x2="102" y2="60" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#00F0FF"/>
-              <stop offset="52%" stop-color="#6B7CFF"/>
-              <stop offset="100%" stop-color="#FF1E8E"/>
+            <linearGradient id="introCarGrad" x1="24" y1="70" x2="116" y2="70" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#38f6ff"/>
+              <stop offset="52%" stop-color="#7c6cff"/>
+              <stop offset="100%" stop-color="#ff2ae6"/>
             </linearGradient>
-            <linearGradient id="splashRingGrad" x1="60" y1="8" x2="60" y2="112" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#FF1E8E"/>
-              <stop offset="52%" stop-color="#8B5CF6"/>
-              <stop offset="100%" stop-color="#00F0FF"/>
+            <linearGradient id="introRingGrad" x1="70" y1="12" x2="70" y2="128" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff2ae6"/>
+              <stop offset="52%" stop-color="#8b5cf6"/>
+              <stop offset="100%" stop-color="#38f6ff"/>
             </linearGradient>
           </defs>
 
-          <!-- Circular Neon Glow Ring (Traces Clockwise) -->
+          <!-- Faint Circular Ring Track -->
           <circle
-            class="splash-ring"
-            cx="60" cy="60" r="51"
-            stroke="url(#splashRingGrad)"
-            stroke-width="2.6"
-            stroke-linecap="round"
-            transform="rotate(-90 60 60)"
+            class="intro-ring-bg"
+            cx="70" cy="70" r="58"
+            stroke="rgba(255, 255, 255, 0.12)"
+            stroke-width="2.4"
           />
 
-          <!-- Step 1: Windshield / Roof Trapezoid -->
-          <path
-            class="car-roof"
-            d="M36 53 L43.5 39.5 Q45.5 36.5 49 36.5 L71 36.5 Q74.5 36.5 76.5 39.5 L84 53 Z"
-            stroke="url(#splashCarGrad)"
+          <!-- Animated Circular Neon Arc -->
+          <circle
+            class="intro-ring-arc"
+            cx="70" cy="70" r="58"
+            stroke="url(#introRingGrad)"
             stroke-width="3"
             stroke-linecap="round"
-            stroke-linejoin="round"
           />
 
-          <!-- Step 2: Sleek Front Body & Hood -->
-          <path
-            class="car-body"
-            d="M27 59 Q27 53 33 53 L87 53 Q93 53 93 59 L93 70 Q93 74.5 88.5 74.5 L31.5 74.5 Q27 74.5 27 70 Z"
-            stroke="url(#splashCarGrad)"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+          <!-- Top Part: Roof & Windshield -->
+          <g class="car-part-top">
+            <path
+              d="M44 61 L52 46 Q54 43 58 43 L82 43 Q86 43 88 46 L96 61 Z"
+              stroke="url(#introCarGrad)"
+              stroke-width="3.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <line x1="70" y1="43" x2="70" y2="61" stroke="url(#introCarGrad)" stroke-width="2" opacity="0.7"/>
+          </g>
 
-          <!-- Step 3: Headlights + Center Grille -->
-          <rect class="car-detail" x="32.5" y="61" width="11.5" height="4.2" rx="2.1" stroke="url(#splashCarGrad)" stroke-width="2.2"/>
-          <rect class="car-detail" x="76" y="61" width="11.5" height="4.2" rx="2.1" stroke="url(#splashCarGrad)" stroke-width="2.2"/>
-          <line class="car-detail" x1="49" y1="68" x2="71" y2="68" stroke="url(#splashCarGrad)" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Bottom Part: Front Body, Grille & Alternating Headlights -->
+          <g class="car-part-bottom">
+            <path
+              d="M34 67 Q34 61 40 61 L100 61 Q106 61 106 67 L106 80 Q106 85 101 85 L39 85 Q34 85 34 80 Z"
+              stroke="url(#introCarGrad)"
+              stroke-width="3.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect class="intro-hl-left" x="40" y="69" width="14" height="5" rx="2.5" fill="#38f6ff"/>
+            <rect class="intro-hl-right" x="86" y="69" width="14" height="5" rx="2.5" fill="#ff2ae6"/>
+            <line x1="58" y1="77" x2="82" y2="77" stroke="url(#introCarGrad)" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
 
-          <!-- Step 4: Left & Right Front Wheels -->
-          <path
-            class="car-wheels"
-            d="M31 74.5 L31 79.5 Q31 82 33.5 82 L40.5 82 Q43 82 43 79.5 L43 74.5 M77 74.5 L77 79.5 Q77 82 79.5 82 L86.5 82 Q89 82 89 79.5 L89 74.5"
-            stroke="url(#splashCarGrad)"
-            stroke-width="2.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+          <!-- Wheels -->
+          <g class="car-part-wheels">
+            <path
+              d="M39 85 L39 91 Q39 93.5 41.5 93.5 L49 93.5 Q51.5 93.5 51.5 91 L51.5 85 M88.5 85 L88.5 91 Q88.5 93.5 91 93.5 L98.5 93.5 Q101 93.5 101 91 L101 85"
+              stroke="url(#introCarGrad)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
         </svg>
       </div>
 
-      <div id="splashBrandText" class="splash-brand-text">
-        <div class="splash-wordmark">
-          <span class="word-cyan">CarDesk</span> <span class="word-pink">US</span>
+      <div id="introBrandWrap" class="intro-brand-wrap">
+        <div class="splash-brand">
+          <span class="sb-cyan">CarDesk</span> <span class="sb-mag">US</span>
         </div>
-        <div class="splash-tagline">DASHBOARD LIGHT &amp; OBD AI</div>
+        <div class="splash-tag">DASHBOARD LIGHT &amp; OBD AI</div>
       </div>
     </div>
   </div>
 
   <!-- =====================================================================
-       FIXED GLASS TOP NAVBAR (Target Dock for Animated Car Logo)
+       FIXED TOP NAVBAR (Docked Logo Target)
        ===================================================================== -->
   <header class="navbar" id="topNavbar">
     <div class="nav-inner">
-      <a href="https://cardeskus.com" class="nav-brand" id="navBrandLink" aria-label="CarDesk US Home">
+      <a href="https://cardeskus.com" class="nav-brand" aria-label="CarDesk US Home">
         <span class="nav-logo-dock" id="navLogoDock" aria-hidden="true">
-          <svg class="nav-car-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="nav-car-svg" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="navCarGrad" x1="18" y1="60" x2="102" y2="60" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#00F0FF"/>
-                <stop offset="52%" stop-color="#6B7CFF"/>
-                <stop offset="100%" stop-color="#FF1E8E"/>
+              <linearGradient id="navCarGrad" x1="24" y1="70" x2="116" y2="70" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#38f6ff"/>
+                <stop offset="52%" stop-color="#7c6cff"/>
+                <stop offset="100%" stop-color="#ff2ae6"/>
               </linearGradient>
             </defs>
-            <path d="M36 53 L43.5 39.5 Q45.5 36.5 49 36.5 L71 36.5 Q74.5 36.5 76.5 39.5 L84 53 Z" stroke="url(#navCarGrad)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M27 59 Q27 53 33 53 L87 53 Q93 53 93 59 L93 70 Q93 74.5 88.5 74.5 L31.5 74.5 Q27 74.5 27 70 Z" stroke="url(#navCarGrad)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="32.5" y="61" width="11.5" height="4.2" rx="2.1" stroke="url(#navCarGrad)" stroke-width="3"/>
-            <rect x="76" y="61" width="11.5" height="4.2" rx="2.1" stroke="url(#navCarGrad)" stroke-width="3"/>
-            <line x1="49" y1="68" x2="71" y2="68" stroke="url(#navCarGrad)" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M31 74.5 L31 79.5 Q31 82 33.5 82 L40.5 82 Q43 82 43 79.5 L43 74.5 M77 74.5 L77 79.5 Q77 82 79.5 82 L86.5 82 Q89 82 89 79.5 L89 74.5" stroke="url(#navCarGrad)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="70" cy="70" r="58" stroke="url(#navCarGrad)" stroke-width="4.5" opacity="0.55"/>
+            <path d="M44 61 L52 46 Q54 43 58 43 L82 43 Q86 43 88 46 L96 61 Z" stroke="url(#navCarGrad)" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M34 67 Q34 61 40 61 L100 61 Q106 61 106 67 L106 80 Q106 85 101 85 L39 85 Q34 85 34 80 Z" stroke="url(#navCarGrad)" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="40" y="69" width="14" height="5" rx="2.5" fill="#38f6ff"/>
+            <rect x="86" y="69" width="14" height="5" rx="2.5" fill="#ff2ae6"/>
+            <line x1="58" y1="77" x2="82" y2="77" stroke="url(#navCarGrad)" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M39 85 L39 91 Q39 93.5 41.5 93.5 L49 93.5 Q51.5 93.5 51.5 91 L51.5 85 M88.5 85 L88.5 91 Q88.5 93.5 91 93.5 L98.5 93.5 Q101 93.5 101 91 L101 85" stroke="url(#navCarGrad)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-        <span class="nav-wordmark"><span class="word-cyan">CarDesk</span> <span class="word-pink">US</span></span>
+        <span class="nav-wordmark"><span class="sb-cyan">CarDesk</span> <span class="sb-mag">US</span></span>
       </a>
 
       <span class="nav-status-pill">
         <span class="live-dot" aria-hidden="true"></span>
-        <span>50 US States &bull; Free</span>
+        <span>100% Free US Tool</span>
       </span>
     </div>
   </header>
 
   <!-- =====================================================================
-       MAIN APPLICATION CONTAINER
+       MAIN APPLICATION WORKSPACE (Adapts cleanly to Desktop, Android & iPhone)
        ===================================================================== -->
   <main class="container" id="mainApp">
-
-    <!-- HERO SECTION -->
-    <section class="hero" aria-labelledby="pageTitle">
-      <div class="hero-kicker">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>INSTANT US OBD-II &amp; DASH LIGHT DIAGNOSTICS</span>
-      </div>
-
-      <h1 id="pageTitle">Dashboard Light &amp; OBD Checker</h1>
-      <p class="hero-subtitle">Snap a dash light or enter any OBD-II code for an instant fix &amp; cost.</p>
-
-      <div class="trust-pills" aria-label="Key tool benefits">
-        <span class="trust-pill">No Login Required</span>
-        <span class="trust-pill">Under 2 Seconds</span>
-        <span class="trust-pill">Zero Photo Storage</span>
-      </div>
-    </section>
-
-    <!-- DUAL-INPUT INTERACTIVE SCANNER CARD -->
-    <section class="scanner-card" id="scannerCard" aria-label="OBD-II Code and Dashboard Light Checker">
-      <div class="scanner-card-header">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>Instant Fixed-Database Diagnostic Lookup</span>
-      </div>
-
-      <!-- Input A: Instant Code / Light Search (Clarity Masked) -->
-      <div class="search-wrap" data-clarity-mask="true">
-        <label for="codeInput" class="sr-only">Enter an OBD-II code or dashboard light name</label>
-        <div class="search-box">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7"/>
-            <path d="M20 20l-3.5-3.5"/>
-          </svg>
-          <input
-            id="codeInput"
-            class="search-input"
-            type="text"
-            inputmode="search"
-            autocomplete="off"
-            autocapitalize="characters"
-            spellcheck="false"
-            placeholder="Enter OBD code (P0420, P0300) or light (TPMS, Oil)..."
-            aria-autocomplete="list"
-            aria-controls="searchDropdown"
-            aria-expanded="false"
-          >
-          <button type="button" id="clearInputBtn" class="clear-btn" aria-label="Clear search">&times;</button>
-          <button type="button" id="lookupBtn" class="check-btn">Check</button>
-        </div>
-        <div id="searchDropdown" class="search-dropdown" role="listbox" aria-label="Matching codes and warning lights"></div>
-      </div>
-
-      <div class="or-divider" aria-hidden="true">
-        <span>OR SNAP DASH LIGHT / SCANNER PRINTOUT</span>
-      </div>
-
-      <!-- Input B: Snap / Upload Photo + Visual Light Picker (Clarity Masked) -->
-      <div class="dual-actions" data-clarity-mask="true">
-        <button type="button" id="snapBtn" class="upload-dropzone">
-          <span class="upload-icon-circle" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-              <circle cx="12" cy="13" r="4"/>
-            </svg>
-          </span>
-          <span class="upload-copy">
-            <strong>Snap or Upload Photo</strong>
-            <small>Dash warning icon or AutoZone / O'Reilly printout</small>
-          </span>
-        </button>
-        <input id="photoInput" type="file" accept="image/*" capture="environment" class="sr-only" data-clarity-mask="true">
-
-        <button type="button" id="browseLightsBtn" class="browse-lights-btn" aria-expanded="false" aria-controls="lightDrawer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
-          </svg>
-          <span>Pick Dash Symbol (32)</span>
-        </button>
-      </div>
-
-      <!-- Photo Scan Preview & Demo/AI Confirmation Panel (Clarity Masked) -->
-      <div id="scanPanel" class="scan-panel" data-clarity-mask="true" hidden>
-        <div id="scanPreviewWrap" class="scan-preview-wrap">
-          <img id="scanPreviewImg" alt="Uploaded dashboard warning light or scanner printout">
-          <div class="scan-laser" aria-hidden="true"></div>
-        </div>
-        <div class="scan-status-row">
-          <span id="scanStatusText">Scanning image...</span>
-          <button type="button" id="closeScanBtn" class="text-action-btn">Close</button>
-        </div>
-        <div id="scanConfirmGrid" class="scan-confirm-grid"></div>
-      </div>
-
-      <!-- Visual 32-Icon Dashboard Light Picker Drawer -->
-      <div id="lightDrawer" class="light-drawer" hidden>
-        <div class="drawer-toolbar">
-          <span class="mini-label">Tap the light on your dash</span>
-          <div class="filter-tabs" role="tablist" aria-label="Filter dashboard lights by severity">
-            <button type="button" class="filter-tab active" data-filter="ALL">All</button>
-            <button type="button" class="filter-tab" data-filter="RED">Red</button>
-            <button type="button" class="filter-tab" data-filter="YELLOW">Yellow</button>
-            <button type="button" class="filter-tab" data-filter="GREEN">Info</button>
-          </div>
-        </div>
-        <div id="lightGrid" class="light-grid"></div>
-      </div>
-
-      <!-- Quick-Tap Popular US Codes & Warning Lights -->
-      <div class="quick-pills-wrap">
-        <div class="mini-label">Most Checked by US Drivers</div>
-        <div class="pill-row">
-          <button type="button" class="quick-pill" data-id="P0420"><code>P0420</code> Catalyst</button>
-          <button type="button" class="quick-pill" data-id="P0300"><code>P0300</code> Misfire</button>
-          <button type="button" class="quick-pill" data-id="P0455"><code>P0455</code> EVAP Leak</button>
-          <button type="button" class="quick-pill" data-id="P0171"><code>P0171</code> Too Lean</button>
-          <button type="button" class="quick-pill" data-id="P0128"><code>P0128</code> Coolant</button>
-          <button type="button" class="quick-pill" data-id="LIGHT_CEL_STEADY">Check Engine</button>
-          <button type="button" class="quick-pill" data-id="LIGHT_TPMS">TPMS Tire</button>
-          <button type="button" class="quick-pill" data-id="LIGHT_OIL_PRESSURE">Oil Can</button>
-          <button type="button" class="quick-pill" data-id="LIGHT_BATTERY">Battery</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CRISP 0.5s HIGH-TECH MICRO-SCAN PULSE BAR -->
-    <div id="microScanPulse" class="micro-scan-pulse" aria-live="polite" hidden>
-      <div class="micro-scan-track">
-        <div class="micro-scan-beam"></div>
-      </div>
-      <span id="microScanLabel">Verifying against US diagnostic database...</span>
-    </div>
-
-    <!-- =====================================================================
-         INTERACTIVE POST-CHECK RESULT CARD
-         ===================================================================== -->
-    <section id="resultSection" class="result-section" aria-live="polite" hidden>
-      <article id="resultCard" class="result-card">
-        <!-- Traffic-Light Safety Banner -->
-        <div id="severityBanner" class="severity-banner">
-          <div class="severity-left">
-            <span class="severity-pulse-dot" aria-hidden="true"></span>
-            <span id="severityBadgeText">DRIVE CAREFULLY — CHECK SOON</span>
-          </div>
-          <button type="button" id="shareResultBtn" class="share-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-            </svg>
-            <span>Share</span>
-          </button>
-        </div>
-
-        <!-- Core Diagnostic Breakdown -->
-        <div class="result-body">
-          <div class="result-header-row">
-            <div id="resultIconBox" class="result-icon-box" aria-hidden="true"></div>
-            <div class="result-title-group">
-              <span id="resultCodeTag" class="result-code-tag">OBD-II CODE &bull; P0420</span>
-              <h2 id="resultTitle" class="result-title">Catalyst System Efficiency Below Threshold</h2>
-            </div>
+    <div class="workspace-grid">
+      <!-- Left / Primary Column: Hero + Dual Scanner -->
+      <div class="primary-col">
+        <section class="hero" aria-labelledby="pageTitle">
+          <div class="hero-kicker">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>US OBD-II &amp; DASHBOARD WARNING LIGHTS</span>
           </div>
 
-          <!-- Plain-English 1-Line Explanation -->
-          <p id="resultPlain" class="result-plain"></p>
+          <h1 id="pageTitle">Dashboard Light &amp; OBD Checker</h1>
+          <p class="hero-subtitle">Snap a dash light or enter any OBD-II code for an instant fix &amp; cost.</p>
 
-          <!-- US Cost & $0 Quick Check Grid -->
-          <div class="metrics-grid">
-            <div class="metric-card cost-card">
-              <div class="metric-label">US Repair Cost Range</div>
-              <div id="resultCost" class="cost-value">$900 – $2,500</div>
-              <div class="cost-note">Typical US parts &amp; shop labor</div>
-            </div>
+          <div class="trust-pills" aria-label="Tool highlights">
+            <span class="trust-pill">No Login</span>
+            <span class="trust-pill">Instant Lookup</span>
+            <span class="trust-pill">Photos Never Stored</span>
+          </div>
+        </section>
 
-            <div class="metric-card quick-check-card">
-              <div class="metric-label">$0 Quick Check First</div>
-              <p id="resultQuickCheck" class="quick-check-text"></p>
-            </div>
+        <!-- Dual Input Scanner Card -->
+        <section class="scanner-card" id="scannerCard" aria-label="OBD-II Code and Dashboard Light Lookup">
+          <div class="scanner-card-header">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Instant Fixed-Database + AI Photo Scan</span>
           </div>
 
-          <!-- Common Culprits -->
-          <div id="causesRow" class="causes-row"></div>
-
-          <!-- Clean Post-Check Action Bar -->
-          <div class="result-actions-bar">
-            <button type="button" id="checkAnotherBtn" class="check-another-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>
+          <!-- Input A: Instant Code / Light Search -->
+          <div class="search-wrap" data-clarity-mask="true">
+            <label for="codeInput" class="sr-only">Enter an OBD-II code or dashboard warning light name</label>
+            <div class="search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="M20 20l-3.5-3.5"/>
               </svg>
-              <span>Check Another Code</span>
+              <input
+                id="codeInput"
+                class="search-input"
+                type="text"
+                inputmode="search"
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                placeholder="Type code (P0420, P0300) or light (TPMS, Oil)..."
+                aria-autocomplete="list"
+                aria-controls="searchDropdown"
+                aria-expanded="false"
+              >
+              <button type="button" id="clearInputBtn" class="clear-btn" aria-label="Clear search">&times;</button>
+              <button type="button" id="lookupBtn" class="check-btn">Check</button>
+            </div>
+            <div id="searchDropdown" class="search-dropdown" role="listbox" aria-label="Matching codes and warning lights"></div>
+          </div>
+
+          <div class="or-divider" aria-hidden="true">
+            <span>OR SNAP PHOTO / PICK DASH LIGHT</span>
+          </div>
+
+          <!-- Input B: Snap / Upload Photo + Visual 32-Light Picker -->
+          <div class="dual-actions" data-clarity-mask="true">
+            <button type="button" id="snapBtn" class="upload-dropzone">
+              <span class="upload-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+              </span>
+              <span class="upload-copy">
+                <strong>Snap / Upload Photo</strong>
+                <small>Dash light or AutoZone / O'Reilly printout</small>
+              </span>
+            </button>
+            <input id="photoInput" type="file" accept="image/*" capture="environment" class="sr-only" data-clarity-mask="true">
+
+            <button type="button" id="browseLightsBtn" class="browse-lights-btn" aria-expanded="false" aria-controls="lightDrawer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+              <span>Dash Icons (32)</span>
             </button>
           </div>
+
+          <!-- Photo Scan Preview & AI/Demo Confirmation Panel -->
+          <div id="scanPanel" class="scan-panel" data-clarity-mask="true" hidden>
+            <div id="scanPreviewWrap" class="scan-preview-wrap">
+              <img id="scanPreviewImg" alt="Uploaded dashboard warning light or scanner printout">
+              <div class="scan-laser" aria-hidden="true"></div>
+            </div>
+            <div class="scan-status-row">
+              <span id="scanStatusText">Scanning image...</span>
+              <button type="button" id="closeScanBtn" class="text-action-btn">Close</button>
+            </div>
+            <div id="scanConfirmGrid" class="scan-confirm-grid"></div>
+          </div>
+
+          <!-- Visual 32-Light Picker Drawer -->
+          <div id="lightDrawer" class="light-drawer" hidden>
+            <div class="drawer-toolbar">
+              <span class="mini-label">Tap the symbol on your dash</span>
+              <div class="filter-tabs" role="tablist" aria-label="Filter dashboard lights">
+                <button type="button" class="filter-tab active" data-filter="ALL">All</button>
+                <button type="button" class="filter-tab" data-filter="RED">Red</button>
+                <button type="button" class="filter-tab" data-filter="YELLOW">Yellow</button>
+                <button type="button" class="filter-tab" data-filter="GREEN">Info</button>
+              </div>
+            </div>
+            <div id="lightGrid" class="light-grid"></div>
+          </div>
+
+          <!-- Quick-Tap Popular US Codes & Lights -->
+          <div class="quick-pills-wrap">
+            <div class="mini-label">Popular US Quick-Tap</div>
+            <div class="pill-row">
+              <button type="button" class="quick-pill" data-id="P0420"><code>P0420</code> Catalyst</button>
+              <button type="button" class="quick-pill" data-id="P0300"><code>P0300</code> Misfire</button>
+              <button type="button" class="quick-pill" data-id="P0455"><code>P0455</code> EVAP Leak</button>
+              <button type="button" class="quick-pill" data-id="P0171"><code>P0171</code> Too Lean</button>
+              <button type="button" class="quick-pill" data-id="P0128"><code>P0128</code> Coolant</button>
+              <button type="button" class="quick-pill" data-id="LIGHT_CEL_STEADY">Check Engine</button>
+              <button type="button" class="quick-pill" data-id="LIGHT_TPMS">TPMS Tire</button>
+              <button type="button" class="quick-pill" data-id="LIGHT_OIL_PRESSURE">Oil Can</button>
+              <button type="button" class="quick-pill" data-id="LIGHT_BATTERY">Battery</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Crisp ~0.5s Micro-Scan Pulse -->
+        <div id="microScanPulse" class="micro-scan-pulse" aria-live="polite" hidden>
+          <div class="micro-scan-track">
+            <div class="micro-scan-beam"></div>
+          </div>
+          <span id="microScanLabel">Checking US diagnostic database...</span>
         </div>
-      </article>
 
-      <!-- Smart Funnel CTA -->
-      <a id="funnelCtaLink" href="https://cardeskus.com/car-buyer-check" class="funnel-cta">
-        <div class="funnel-copy">
-          Repair costing too much or inspecting a used car?
-          <strong>Run our Car Buyer VIN &amp; Doc Audit</strong>
-        </div>
-        <span class="funnel-pill">Audit VIN &rarr;</span>
-      </a>
+        <!-- Interactive Result Card -->
+        <section id="resultSection" class="result-section" aria-live="polite" hidden>
+          <article id="resultCard" class="result-card">
+            <div id="severityBanner" class="severity-banner">
+              <div class="severity-left">
+                <span class="severity-pulse-dot" aria-hidden="true"></span>
+                <span id="severityBadgeText">DRIVE CAREFULLY — CHECK SOON</span>
+              </div>
+              <button type="button" id="shareResultBtn" class="share-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                <span>Share</span>
+              </button>
+            </div>
 
-      <!-- Required US Safety Disclaimer & Privacy Assurance -->
-      <p class="result-disclaimer">
-        For informational and educational purposes only. Consult a certified mechanic for safety-critical vehicle issues.
-        &bull; Photos are processed securely and not permanently stored.
-      </p>
-    </section>
+            <div class="result-body">
+              <div class="result-header-row">
+                <div id="resultIconBox" class="result-icon-box" aria-hidden="true"></div>
+                <div class="result-title-group">
+                  <span id="resultCodeTag" class="result-code-tag">OBD-II CODE &bull; P0420</span>
+                  <h2 id="resultTitle" class="result-title">Catalyst System Efficiency Below Threshold</h2>
+                </div>
+              </div>
 
-    <!-- =====================================================================
-         MINIMAL US DRIVER FAQS (1:1 Match with FAQPage JSON-LD)
-         ===================================================================== -->
-    <section class="faq-section" aria-labelledby="faqHeading">
-      <h2 id="faqHeading" class="section-heading">Quick US Driver FAQs</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Is it safe to drive with my Check Engine Light on?</summary>
-          <p>If the Check Engine Light is steady (solid yellow/amber) and the car drives normally, you can usually drive carefully and schedule a check within a few days. If the Check Engine Light is flashing, pull over safely right away—a flashing light means active engine misfires that can quickly destroy your catalytic converter.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Where can I get my OBD-II trouble code scanned for free in the US?</summary>
-          <p>Most major US auto parts stores—including AutoZone, O'Reilly Auto Parts, Advance Auto Parts, and NAPA—offer free OBD-II code scans in their parking lots. Enter the printed code (like P0420 or P0171) into this checker for an instant safety verdict and US repair cost range.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Why did my Check Engine Light turn on right after getting gas?</summary>
-          <p>A loose, cracked, or unclicked gas cap is the #1 zero-dollar cause of EVAP codes like P0455, P0442, and P0456. Tighten the cap until it clicks 2 to 3 times; the light usually resets automatically after 2 to 5 normal drives.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Which dashboard warning lights mean I must stop driving immediately?</summary>
-          <p>Red warning lights—including Low Oil Pressure (oil can), Engine Coolant Overheating (thermometer), Brake System Warning (when the parking brake is off), Battery/Charging failure, and a Flashing Check Engine Light—mean you should pull over safely and turn off the engine to avoid severe damage or brake loss.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How accurate are the US repair cost ranges shown here?</summary>
-          <p>Repair ranges reflect typical US independent shop and dealership parts-plus-labor pricing nationwide. Actual quotes vary by vehicle make, model, local labor rates, and whether a $0 quick check solves the issue first.</p>
-        </details>
+              <p id="resultPlain" class="result-plain"></p>
+
+              <div class="metrics-grid">
+                <div class="metric-card cost-card">
+                  <div class="metric-label">US Repair Cost Range</div>
+                  <div id="resultCost" class="cost-value">$900 – $2,500</div>
+                  <div class="cost-note">Typical US parts &amp; labor</div>
+                </div>
+
+                <div class="metric-card quick-check-card">
+                  <div class="metric-label">$0 Quick Check First</div>
+                  <p id="resultQuickCheck" class="quick-check-text"></p>
+                </div>
+              </div>
+
+              <div id="causesRow" class="causes-row"></div>
+
+              <div class="result-actions-bar">
+                <button type="button" id="checkAnotherBtn" class="check-another-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>
+                  </svg>
+                  <span>Check Another Code</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Smart Funnel CTA -->
+          <a id="funnelCtaLink" href="https://cardeskus.com/car-buyer-check" class="funnel-cta">
+            <div class="funnel-copy">
+              Repair costing too much or inspecting a used car?
+              <strong>Run our Car Buyer VIN &amp; Doc Audit</strong>
+            </div>
+            <span class="funnel-pill">Audit VIN &rarr;</span>
+          </a>
+
+          <!-- Safety Disclaimer & Photo Privacy Notice -->
+          <p class="result-disclaimer">
+            For informational and educational purposes only. Consult a certified mechanic for safety-critical vehicle issues.
+            &bull; Photos are processed securely and not permanently stored.
+          </p>
+        </section>
       </div>
-    </section>
+
+      <!-- Right / Secondary Column on Desktop: Quick US Driver FAQs -->
+      <aside class="secondary-col" aria-labelledby="faqHeading">
+        <section class="faq-section">
+          <h2 id="faqHeading" class="section-heading">Quick US Driver FAQs</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Is it safe to drive with my Check Engine Light on?</summary>
+              <p>If the Check Engine Light is steady (solid yellow/amber) and the car drives normally, you can usually drive carefully and schedule a check within a few days. If the Check Engine Light is flashing, pull over safely right away—a flashing light means active engine misfires that can quickly destroy your catalytic converter.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Where can I get my OBD-II trouble code scanned for free in the US?</summary>
+              <p>Most major US auto parts stores—including AutoZone, O'Reilly Auto Parts, Advance Auto Parts, and NAPA—offer free OBD-II code scans in their parking lots. Enter the printed code (like P0420 or P0171) into this checker for an instant safety verdict and US repair cost range.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Why did my Check Engine Light turn on right after getting gas?</summary>
+              <p>A loose, cracked, or unclicked gas cap is the #1 zero-dollar cause of EVAP codes like P0455, P0442, and P0456. Tighten the cap until it clicks 2 to 3 times; the light usually resets automatically after 2 to 5 normal drives.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Which dashboard warning lights mean I must stop driving immediately?</summary>
+              <p>Red warning lights—including Low Oil Pressure (oil can), Engine Coolant Overheating (thermometer), Brake System Warning (when the parking brake is off), Battery/Charging failure, and a Flashing Check Engine Light—mean you should pull over safely and turn off the engine to avoid severe damage or brake loss.</p>
+            </details>
+            <details class="faq-item">
+              <summary>How accurate are the US repair cost ranges shown here?</summary>
+              <p>Repair ranges reflect typical US independent shop and dealership parts-plus-labor pricing nationwide. Actual quotes vary by vehicle make, model, local labor rates, and whether a $0 quick check solves the issue first.</p>
+            </details>
+          </div>
+        </section>
+      </aside>
+    </div>
   </main>
 
   <!-- =====================================================================
@@ -488,7 +493,7 @@
   <footer class="site-footer">
     <div class="container">
       <nav class="ecosystem-nav" aria-label="CarDesk US Ecosystem">
-        <span class="eco-heading">CarDesk US Tools:</span>
+        <span class="eco-heading">CarDesk US:</span>
         <a id="ecoScamLink" href="https://scamcheck.cardeskus.com" class="eco-link">Scam Checker</a>
         <a id="ecoTicketLink" href="https://cardeskus.com/ticket-helper" class="eco-link">Ticket Helper</a>
         <a id="ecoBuyerLink" href="https://cardeskus.com/car-buyer-check" class="eco-link">Car Buyer Check</a>
@@ -505,9 +510,7 @@
     </div>
   </footer>
 
-  <!-- =====================================================================
-       INTERACTIVE LEGAL & CONTACT MODAL
-       ===================================================================== -->
+  <!-- Legal & Contact Modal -->
   <div id="legalModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
     <div class="modal-dialog">
       <div class="modal-header">
@@ -518,10 +521,10 @@
     </div>
   </div>
 
-  <!-- Toast Feedback -->
+  <!-- Toast Notification -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <!-- Modular Scripts (Part 3 & Part 4) -->
+  <!-- Modular Scripts -->
   <script src="./obd-data.js" defer></script>
   <script src="./app.js" defer></script>
 </body>
