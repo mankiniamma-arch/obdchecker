@@ -1,0 +1,443 @@
+/* =========================================================================
+   CarDesk US — Dashboard Light & OBD Checker
+   Part 2: styles.css (Neon Dark GTA-6-Inspired Theme + Signature Animations)
+   ========================================================================= */
+
+:root {
+  --bg-obsidian: #060812;
+  --bg-deep: #0B0F1F;
+  --bg-glass: rgba(14, 18, 34, 0.78);
+  --bg-glass-strong: rgba(12, 16, 30, 0.92);
+  --bg-input: rgba(6, 9, 20, 0.88);
+
+  --neon-cyan: #00F0FF;
+  --neon-pink: #FF1E8E;
+  --neon-violet: #8B5CF6;
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #A6B2CE;
+  --text-muted: #6E7B9B;
+
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-cyan: rgba(0, 240, 255, 0.36);
+  --border-pink: rgba(255, 30, 142, 0.4);
+
+  --red: #FF3B5C;
+  --red-bg: rgba(255, 59, 92, 0.14);
+  --red-border: rgba(255, 59, 92, 0.52);
+
+  --yellow: #FFB800;
+  --yellow-bg: rgba(255, 184, 0, 0.13);
+  --yellow-border: rgba(255, 184, 0, 0.48);
+
+  --green: #00E599;
+  --green-bg: rgba(0, 229, 153, 0.13);
+  --green-border: rgba(0, 229, 153, 0.45);
+
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 13px;
+  --radius-sm: 10px;
+
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--bg-obsidian);
+  background-image:
+    radial-gradient(ellipse 85% 50% at 12% -8%, rgba(255, 30, 142, 0.22), transparent 60%),
+    radial-gradient(ellipse 75% 50% at 88% 0%, rgba(0, 240, 255, 0.18), transparent 58%),
+    radial-gradient(ellipse 65% 45% at 50% 105%, rgba(139, 92, 246, 0.14), transparent 65%);
+  background-attachment: fixed;
+  line-height: 1.5;
+  overflow-x: hidden;
+  padding-top: 66px;
+}
+
+/* Subtle Vice Horizon Grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 18%, black 18%, transparent 78%);
+  z-index: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* =========================================================================
+   1. SIGNATURE ANIMATED CAR LOGO INTRO (Center -> Dock to Top Navbar)
+   ========================================================================= */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 45%, #0D1226 0%, #060812 72%);
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.splash-overlay.docking {
+  background: rgba(6, 8, 18, 0);
+  pointer-events: none;
+}
+
+.splash-overlay.done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.splash-emblem {
+  width: 124px;
+  height: 124px;
+  display: grid;
+  place-items: center;
+  will-change: transform, opacity;
+  transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  filter: drop-shadow(0 0 18px rgba(0, 240, 255, 0.38)) drop-shadow(0 0 28px rgba(255, 30, 142, 0.28));
+}
+
+.cardesk-car-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Line-Draw Sequence */
+.splash-ring {
+  stroke-dasharray: 330;
+  stroke-dashoffset: 330;
+  animation: drawStroke 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards;
+}
+
+.car-roof {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: drawStroke 0.42s ease-out 0.05s forwards;
+}
+
+.car-body {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: drawStroke 0.48s ease-out 0.16s forwards;
+}
+
+.car-detail {
+  opacity: 0;
+  animation: fadeInSimple 0.3s ease-out 0.36s forwards;
+}
+
+.car-wheels {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: drawStroke 0.35s ease-out 0.32s forwards;
+}
+
+@keyframes drawStroke {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeInSimple {
+  to { opacity: 1; }
+}
+
+.splash-brand-text {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: brandRise 0.42s ease-out 0.28s forwards;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.splash-overlay.docking .splash-brand-text {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+@keyframes brandRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.splash-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.splash-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.word-cyan { color: var(--neon-cyan); }
+.word-pink { color: var(--neon-pink); }
+
+/* =========================================================================
+   2. FIXED GLASS TOP NAVBAR
+   ========================================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+  z-index: 80;
+  background: rgba(6, 8, 18, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-inner {
+  max-width: 760px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.nav-logo-dock {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(14, 18, 34, 0.9);
+  border: 1px solid rgba(0, 240, 255, 0.34);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.22);
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-logo-dock.landed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-car-svg {
+  width: 28px;
+  height: 28px;
+}
+
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.nav-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.24);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  white-space: nowrap;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  flex-shrink: 0;
+}
+
+/* =========================================================================
+   3. HERO SECTION
+   ========================================================================= */
+.hero {
+  text-align: center;
+  padding: 20px 0 18px;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 30, 142, 0.1);
+  border: 1px solid rgba(255, 30, 142, 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FF8BC4;
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 6.2vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  background: linear-gradient(95deg, #FFFFFF 12%, #A5F3FC 56%, #FF6BB8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  margin: 0 auto 14px;
+  max-width: 520px;
+  font-size: clamp(0.95rem, 2.8vw, 1.08rem);
+  color: var(--text-secondary);
+}
+
+.trust-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+
+.trust-pill {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* =========================================================================
+   4. DUAL-INPUT INTERACTIVE SCANNER CARD
+   ========================================================================= */
+.scanner-card {
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.scanner-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.42), rgba(255, 30, 142, 0.3), transparent 65%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.scanner-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+/* Search Bar */
+.search-wrap {
+  position: relative;
+  z-index: 30;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-input);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  padding: 6px 7px 6px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15), 0 0 24px rgba(0, 240, 255, 0.16);
+}
+
+.search-icon {
+  width: 20px;
