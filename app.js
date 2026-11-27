@@ -1,14 +1,17 @@
 /* =========================================================================
    CarDesk US — Dashboard Light & OBD Checker
-   Part 3: app.js (Full Interactive Console, Drag/Drop + Paste Scan,
-   Instant Fixed-DB Lookup, Backend /api/scan AI + Demo Fallback & Modals)
+   Part 3 of 3: app.js
+   - Install App PWA Prompt + iOS/Desktop Install Guide
+   - In-Card 32-Symbol Dashboard Picker Drawer
+   - Drag/Drop + Ctrl+V Paste + Camera/Gallery -> Vercel /api/scan AI
+   - Instant Fixed-DB Lookup (0ms, $0) + Generic OBD-II Fallback + Modals
    ========================================================================= */
 
 (function () {
   "use strict";
 
   /* =======================================================================
-     1. EASY CONFIGURATION (Update URLs / Email if Needed; Keep API Key in Vercel)
+     1. CONFIGURATION (Update Links / Email Anytime; Keep API Key in Vercel)
      ======================================================================= */
   const CONFIG = {
     VIN_AUDIT_URL: "https://cardeskus.com/car-buyer-check",
@@ -16,8 +19,6 @@
     TICKET_HELPER_URL: "https://cardeskus.com/ticket-helper",
     CAR_BUYER_URL: "https://cardeskus.com/car-buyer-check",
     CONTACT_EMAIL: "support@cardeskus.com",
-
-    // Vercel Serverless Function (/api/scan) where GEMINI_API_KEY is stored
     SCAN_API_ENDPOINT: "/api/scan"
   };
 
@@ -64,7 +65,7 @@
   };
 
   /* =======================================================================
-     3. LEGAL & CONTACT MODAL CONTENT (Includes Microsoft Clarity Disclosure)
+     3. LEGAL, CONTACT & INSTALL GUIDE MODALS (Includes Clarity Disclosure)
      ======================================================================= */
   const LEGAL_CONTENT = {
     terms: {
@@ -111,6 +112,18 @@
         <p><a href="mailto:${CONFIG.CONTACT_EMAIL}" style="color:var(--neon-cyan);font-weight:600;">${CONFIG.CONTACT_EMAIL}</a></p>
         <p style="font-size:0.8rem;color:var(--text-muted);">Note: We cannot provide individualized mechanic advice by email. For urgent roadside issues, consult a certified US mechanic.</p>
       `
+    },
+    install: {
+      title: "Install CarDesk US OBD Checker",
+      html: `
+        <p>Add <strong>CarDesk US OBD Checker</strong> to your home screen for 1-tap roadside access—100% free, no App Store download needed.</p>
+        <h3>iPhone / iPad (Safari)</h3>
+        <p>1. Tap the <strong>Share</strong> icon at the bottom of Safari.<br>2. Scroll down and tap <strong>Add to Home Screen</strong>.<br>3. Tap <strong>Add</strong> in the top-right corner.</p>
+        <h3>Android (Chrome)</h3>
+        <p>1. Tap the <strong>&vellip;</strong> menu in the top-right corner.<br>2. Tap <strong>Install app</strong> or <strong>Add to Home screen</strong>.</p>
+        <h3>Laptop / Desktop (Chrome or Edge)</h3>
+        <p>Click the <strong>Install</strong> icon inside the right side of your browser address bar, or open the browser menu &rarr; <strong>Install CarDesk US</strong>.</p>
+      `
     }
   };
 
@@ -122,7 +135,7 @@
 
   const el = {
     navCarTarget: document.getElementById("navCarTarget"),
-    headerDashBtn: document.getElementById("headerDashBtn"),
+    installAppBtn: document.getElementById("installAppBtn"),
     scannerCard: document.getElementById("scannerCard"),
     dropZone: document.getElementById("dropZone"),
     photoInput: document.getElementById("photoInput"),
@@ -130,6 +143,7 @@
     clearBtn: document.getElementById("clearInputBtn"),
     lookupBtn: document.getElementById("lookupBtn"),
     dropdown: document.getElementById("searchDropdown"),
+    browseLightsBtn: document.getElementById("browseLightsBtn"),
     scanPanel: document.getElementById("scanPanel"),
     scanPreviewWrap: document.getElementById("scanPreviewWrap"),
     scanPreviewImg: document.getElementById("scanPreviewImg"),
@@ -166,21 +180,57 @@
   let currentMatches = [];
   let scanTimer = null;
   let toastTimer = null;
+  let deferredInstallPrompt = null;
 
-  if (el.funnelCtaLink) el.funnelCtaLink.href = CONFIG.VIN_AUDIT_URL;
-  const ecoScam = document.getElementById("ecoScamLink");
-  const ecoTicket = document.getElementById("ecoTicketLink");
-  const ecoBuyer = document.getElementById("ecoBuyerLink");
-  if (ecoScam) ecoScam.href = CONFIG.SCAM_CHECKER_URL;
-  if (ecoTicket) ecoTicket.href = CONFIG.TICKET_HELPER_URL;
-  if (ecoBuyer) ecoBuyer.href = CONFIG.CAR_BUYER_URL;
+  // Bind Ecosystem URLs
+  const linkMap = {
+    funnelCtaLink: CONFIG.VIN_AUDIT_URL,
+    navTicketLink: CONFIG.TICKET_HELPER_URL,
+    toolScamLink: CONFIG.SCAM_CHECKER_URL,
+    toolTicketLink: CONFIG.TICKET_HELPER_URL,
+    toolBuyerLink: CONFIG.CAR_BUYER_URL
+  };
+  Object.entries(linkMap).forEach(([id, url]) => {
+    const node = document.getElementById(id);
+    if (node) node.href = url;
+  });
 
   if (el.navCarTarget) {
     el.navCarTarget.classList.add("landed");
   }
 
   /* =======================================================================
-     5. INSTANT SEARCH & GENERIC OBD-II FALLBACK DECODER
+     5. INSTALL APP BUTTON (Native PWA Install + Clean iOS/Desktop Guide)
+     ======================================================================= */
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    showToast("CarDesk US OBD Checker installed!");
+  });
+
+  if (el.installAppBtn) {
+    el.installAppBtn.addEventListener("click", async () => {
+      if (deferredInstallPrompt) {
+        try {
+          deferredInstallPrompt.prompt();
+          const choice = await deferredInstallPrompt.userChoice;
+          deferredInstallPrompt = null;
+          if (choice && choice.outcome === "accepted") {
+            showToast("Installing CarDesk US...");
+          }
+          return;
+        } catch (_) {}
+      }
+      openModal("install");
+    });
+  }
+
+  /* =======================================================================
+     6. INSTANT SEARCH & GENERIC OBD-II FALLBACK DECODER
      ======================================================================= */
   function searchDatabase(rawQuery) {
     const q = (rawQuery || "").trim().toLowerCase();
@@ -265,7 +315,7 @@
   }
 
   /* =======================================================================
-     6. CRISP ~0.5s MICRO-SCAN REVEAL -> INTERACTIVE RESULT CARD
+     7. CRISP ~0.5s MICRO-SCAN REVEAL -> INTERACTIVE RESULT CARD
      ======================================================================= */
   function revealResultWithPulse(item, skipPulse = false) {
     if (!item) return;
@@ -349,11 +399,11 @@
       return;
     }
 
-    showToast("No exact match — try P0420, P0300, or Dash Icons (32)");
+    showToast("No exact match — try P0420, P0300, or browse 32 symbols below");
   }
 
   /* =======================================================================
-     7. VISUAL 32-ICON DASHBOARD LIGHT PICKER
+     8. IN-CARD VISUAL 32-SYMBOL DASHBOARD LIGHT DRAWER
      ======================================================================= */
   function renderLightGrid(filter = "ALL") {
     const lights = DB.filter(i => i.type === "light" && (filter === "ALL" || i.severity === filter));
@@ -367,18 +417,13 @@
 
   renderLightGrid("ALL");
 
-  function openDashIconsDrawer() {
-    el.lightDrawer.hidden = false;
-    el.scanPanel.hidden = true;
-    el.scannerCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }
-
-  if (el.headerDashBtn) {
-    el.headerDashBtn.addEventListener("click", () => {
-      if (el.lightDrawer.hidden) {
-        openDashIconsDrawer();
-      } else {
-        el.lightDrawer.hidden = true;
+  if (el.browseLightsBtn) {
+    el.browseLightsBtn.addEventListener("click", () => {
+      const willOpen = el.lightDrawer.hidden;
+      el.lightDrawer.hidden = !willOpen;
+      el.browseLightsBtn.setAttribute("aria-expanded", String(willOpen));
+      if (willOpen) {
+        el.scanPanel.hidden = true;
       }
     });
   }
@@ -399,12 +444,13 @@
       el.input.value = item.name;
       el.clearBtn.classList.add("visible");
       el.lightDrawer.hidden = true;
+      if (el.browseLightsBtn) el.browseLightsBtn.setAttribute("aria-expanded", "false");
       revealResultWithPulse(item);
     }
   });
 
   /* =======================================================================
-     8. SNAP / UPLOAD / DRAG-DROP / PASTE PHOTO -> /api/scan AI + FALLBACK
+     9. SNAP / UPLOAD / DRAG-DROP / CTRL+V PASTE -> /api/scan AI + FALLBACK
      ======================================================================= */
   if (el.dropZone) {
     el.dropZone.addEventListener("click", () => el.photoInput.click());
@@ -437,7 +483,6 @@
     });
   }
 
-  // Ctrl+V / Cmd+V screenshot paste support
   document.addEventListener("paste", e => {
     const items = e.clipboardData && e.clipboardData.items;
     if (!items) return;
@@ -546,6 +591,7 @@
     if (!file) return;
 
     el.lightDrawer.hidden = true;
+    if (el.browseLightsBtn) el.browseLightsBtn.setAttribute("aria-expanded", "false");
     el.scanConfirmGrid.innerHTML = "";
     el.scanPanel.hidden = false;
     el.scanPreviewWrap.classList.add("scanning");
@@ -604,7 +650,7 @@
   });
 
   /* =======================================================================
-     9. INPUT, PILLS, CHECK ANOTHER, SHARE & LEGAL MODALS
+     10. INPUT, PILLS, CHECK ANOTHER, SHARE & MODALS
      ======================================================================= */
   el.input.addEventListener("input", () => {
     const val = el.input.value;
@@ -708,14 +754,16 @@
     }
   });
 
+  function openModal(key) {
+    const content = LEGAL_CONTENT[key];
+    if (!content) return;
+    el.modalTitle.textContent = content.title;
+    el.modalBody.innerHTML = content.html;
+    el.modal.hidden = false;
+  }
+
   document.querySelectorAll(".legal-trigger[data-modal]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const content = LEGAL_CONTENT[btn.dataset.modal];
-      if (!content) return;
-      el.modalTitle.textContent = content.title;
-      el.modalBody.innerHTML = content.html;
-      el.modal.hidden = false;
-    });
+    btn.addEventListener("click", () => openModal(btn.dataset.modal));
   });
 
   function closeModal() { el.modal.hidden = true; }
@@ -731,7 +779,7 @@
   }
 
   /* =======================================================================
-     10. AUTO-LOAD SHARED ?code= QUERY ON LOAD
+     11. AUTO-LOAD SHARED ?code= QUERY ON LOAD
      ======================================================================= */
   (function initFromURL() {
     const params = new URLSearchParams(window.location.search);
