@@ -126,34 +126,30 @@
 </head>
 <body>
 
-  <!-- Signature CarDesk US Splash Intro (Exact Car Shape + Animation -> Flies to Top) -->
+  <!-- Signature CarDesk US Splash Intro (Bigger Car, Empty Clean Circle, 1-2 Blinking Lights -> Flies to Top) -->
   <div id="introSplash" class="intro-splash" title="Tap anywhere to skip">
     <div id="introBackdrop" class="intro-backdrop"></div>
     <div class="intro-stage">
       <div id="introBadge" class="intro-badge">
         <svg id="introSvg" class="intro-svg" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="introHaloGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#172350" stop-opacity="0.75"/>
-              <stop offset="72%" stop-color="#090d22" stop-opacity="0.45"/>
-              <stop offset="100%" stop-color="#040611" stop-opacity="0"/>
-            </radialGradient>
             <linearGradient id="introCarGrad" x1="20" y1="70" x2="120" y2="70" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#38f6ff"/>
               <stop offset="50%" stop-color="#8b5cf6"/>
               <stop offset="100%" stop-color="#ff2ae6"/>
             </linearGradient>
-            <linearGradient id="introRingGrad" x1="70" y1="12" x2="70" y2="128" gradientUnits="userSpaceOnUse">
+            <linearGradient id="introRingGrad" x1="70" y1="10" x2="70" y2="130" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#ff2ae6"/>
               <stop offset="52%" stop-color="#8b5cf6"/>
               <stop offset="100%" stop-color="#38f6ff"/>
             </linearGradient>
           </defs>
 
-          <circle class="intro-ring-bg" cx="70" cy="70" r="64" fill="url(#introHaloGrad)"/>
-          <circle class="intro-ring-arc" cx="70" cy="70" r="58" stroke="url(#introRingGrad)" stroke-width="3.2" stroke-linecap="round"/>
+          <!-- Clean Outer Neon Circle Only (Nothing Inside) -->
+          <circle class="intro-ring-arc" cx="70" cy="70" r="60" fill="none" stroke="url(#introRingGrad)" stroke-width="3.2" stroke-linecap="round"/>
 
-          <g transform="translate(70 70) scale(0.8) translate(-70 -70)">
+          <!-- Larger Exact Car Silhouette Centered Cleanly -->
+          <g transform="translate(70 70) scale(0.92) translate(-70 -69)">
             <g class="car-part-top">
               <path d="M35 61 L43 45 Q45.5 41.2 51 40.5 Q70 38 89 40.5 Q94.5 41.2 97 45 L105 61 Z" stroke="url(#introCarGrad)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
@@ -180,12 +176,12 @@
     </div>
   </div>
 
-  <!-- Top Navbar (1:1 Clean CarDesk US Header with Install App) -->
+  <!-- Top Navbar (Larger Clean Car Logo Without Any Circle/Box + Continuous 1-2 Blinking Headlights) -->
   <header class="navbar" id="topNavbar">
     <div class="nav-inner">
       <a href="https://cardeskus.com" class="nav-brand" aria-label="CarDesk US Home">
         <span class="nav-logo-dock" id="navCarTarget" aria-hidden="true">
-          <svg class="nav-car-svg" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="nav-car-svg" viewBox="14 34 112 70" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="navCarGrad" x1="20" y1="70" x2="120" y2="70" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#38f6ff"/>
@@ -193,15 +189,13 @@
                 <stop offset="100%" stop-color="#ff2ae6"/>
               </linearGradient>
             </defs>
-            <g transform="translate(70 70) scale(0.95) translate(-70 -70)">
-              <path d="M35 61 L43 45 Q45.5 41.2 51 40.5 Q70 38 89 40.5 Q94.5 41.2 97 45 L105 61 Z" stroke="url(#navCarGrad)" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M35 61 C25 61.5 21 66.5 20 74 L19.5 81 C19.5 86 23 89 28 89 L112 89 C117 89 120.5 86 120.5 81 L120 74 C119 66.5 115 61.5 105 61 Z" stroke="url(#navCarGrad)" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M27.5 70.5 L44 72.8 L43 78.2 L26.5 76.5 Z" fill="#38f6ff"/>
-              <path d="M112.5 70.5 L96 72.8 L97 78.2 L113.5 76.5 Z" fill="#ff2ae6"/>
-              <rect x="52" y="74.5" width="36" height="9.2" rx="4.2" stroke="url(#navCarGrad)" stroke-width="4.2"/>
-              <rect x="27" y="89" width="18.5" height="10.2" rx="3.4" stroke="url(#navCarGrad)" stroke-width="4.8"/>
-              <rect x="94.5" y="89" width="18.5" height="10.2" rx="3.4" stroke="url(#navCarGrad)" stroke-width="4.8"/>
-            </g>
+            <path d="M35 61 L43 45 Q45.5 41.2 51 40.5 Q70 38 89 40.5 Q94.5 41.2 97 45 L105 61 Z" stroke="url(#navCarGrad)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M35 61 C25 61.5 21 66.5 20 74 L19.5 81 C19.5 86 23 89 28 89 L112 89 C117 89 120.5 86 120.5 81 L120 74 C119 66.5 115 61.5 105 61 Z" stroke="url(#navCarGrad)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="nav-hl-left" d="M27.5 70.5 L44 72.8 L43 78.2 L26.5 76.5 Z" fill="#38f6ff"/>
+            <path class="nav-hl-right" d="M112.5 70.5 L96 72.8 L97 78.2 L113.5 76.5 Z" fill="#ff2ae6"/>
+            <rect x="52" y="74.5" width="36" height="9.2" rx="4.2" stroke="url(#navCarGrad)" stroke-width="3.6"/>
+            <rect x="27" y="89" width="18.5" height="10.2" rx="3.4" stroke="url(#navCarGrad)" stroke-width="4.2"/>
+            <rect x="94.5" y="89" width="18.5" height="10.2" rx="3.4" stroke="url(#navCarGrad)" stroke-width="4.2"/>
           </svg>
         </span>
         <span class="nav-wordmark"><span class="sb-cyan">CarDesk</span> <span class="sb-mag">US</span></span>
@@ -266,7 +260,7 @@
           </div>
         </div>
 
-        <!-- 3 Premium Feature Cards (Matching Scam Checker Bottom-Left Cards) -->
+        <!-- 3 Premium Feature Cards -->
         <div class="mini-cards-grid">
           <div class="mini-card">
             <span class="mini-icon icon-cyan" aria-hidden="true">
@@ -442,7 +436,7 @@
       </p>
     </section>
 
-    <!-- MORE TOOLS BY CARDESK US (Matching Scam Checker Ecosystem Section) -->
+    <!-- MORE TOOLS BY CARDESK US -->
     <section id="moreToolsSection" class="tools-section" aria-labelledby="toolsHeading">
       <div class="tools-header">
         <h2 id="toolsHeading" class="tools-eyebrow">MORE TOOLS BY CARDESK US</h2>
@@ -562,7 +556,7 @@
           var tRect = target.getBoundingClientRect();
           var dx = (tRect.left + tRect.width / 2) - (bRect.left + bRect.width / 2);
           var dy = (tRect.top + tRect.height / 2) - (bRect.top + bRect.height / 2);
-          var scale = Math.max(0.22, Math.min(0.42, tRect.width / bRect.width));
+          var scale = Math.max(0.28, Math.min(0.48, tRect.width / bRect.width));
 
           badge.style.transition = 'transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease 0.42s';
           badge.style.transform = 'translate3d(' + dx.toFixed(1) + 'px, ' + dy.toFixed(1) + 'px, 0) scale(' + scale.toFixed(3) + ')';
